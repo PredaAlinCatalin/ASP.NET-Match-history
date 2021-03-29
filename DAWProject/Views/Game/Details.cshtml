@@ -1,0 +1,53 @@
+﻿@model DAWProject.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@Html.Label("UserName", "UserName:")
+<br />
+<p>@Model.User.UserName</p>
+
+@Html.Label("Duration", "Duration:")
+<br />
+<p>@Model.Duration</p>
+
+@Html.Label("Day", "Day:")
+<br />
+<p>@Model.Day</p>
+
+@Html.Label("Month", "Month:")
+<br />
+<p>@Model.Month</p>
+
+@Html.Label("Year", "Year:")
+<br />
+<p>@Model.Year</p>
+
+@if (Model.Attributes.Count > 0)
+{
+    @Html.Label("Attributes", "Attributes:")
+    <br />
+    <ul>
+        @foreach (var attribute in Model.Attributes)
+        {
+            <li>@attribute.Name</li>
+        }
+    </ul>
+}
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Game", method: FormMethod.Get, routeValues: new { id = Model.GameId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Game", method: FormMethod.Post, routeValues: new { id = Model.GameId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+

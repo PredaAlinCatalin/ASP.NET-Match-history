@@ -1,0 +1,30 @@
+﻿@model DAWProject.Models.PlayerStat
+@{
+    ViewBag.Name = "Update";
+}
+
+<h2>@ViewBag.Name</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "PlayerStat"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(b => b.PlayerStatId)
+    <br />
+    <br />
+
+    @Html.Label("NrWins", "NrWins:")
+    <br />
+    @Html.EditorFor(b => b.NrWins)
+    @Html.ValidationMessageFor(b => b.NrWins, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrLosses", "NrLosses:")
+    <br />
+    @Html.EditorFor(b => b.NrLosses)
+    @Html.ValidationMessageFor(b => b.NrLosses, "", new { @class = "text-danger" })
+    <br />
+
+    
+    <button class="btn btn-primary" type="submit">Update</button>
+}

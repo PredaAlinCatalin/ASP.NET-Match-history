@@ -1,0 +1,64 @@
+﻿@model DAWProject.Models.GameResult
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "GameResult", method: FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.UserId)
+
+    @Html.Label("Game", "Game:")
+    <br />
+    @Html.DropDownListFor(p => p.GameId, new SelectList(ViewBag.GameList, "Value", "Text"), "Choose a game", new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.GameId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Player", "Player:")
+    <br />
+    @Html.DropDownListFor(p => p.PlayerId, new SelectList(ViewBag.PlayerList, "Value", "Text"), "Choose a player", new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.PlayerId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("NrKills", "NrKills:")
+    <br />
+    @Html.TextBoxFor(b => b.NrKills, null, new { placeholder = "Type in the gameResult's nrKills", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrKills, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrDeaths", "NrDeaths:")
+    <br />
+    @Html.TextBoxFor(b => b.NrDeaths, null, new { placeholder = "Type in the gameResult's nrDeaths", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrDeaths, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrAssists", "NrAssists:")
+    <br />
+    @Html.TextBoxFor(b => b.NrAssists, null, new { placeholder = "Type in the gameResult's nrAssists", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrAssists, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("DamageDealt", "DamageDealt:")
+    <br />
+    @Html.TextBoxFor(b => b.DamageDealt, null, new { placeholder = "Type in the gameResult's year", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.DamageDealt, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("CreepScore", "CreepScore:")
+    <br />
+    @Html.TextBoxFor(b => b.CreepScore, null, new { placeholder = "Type in the gameResult's year", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.CreepScore, "", new { @class = "text-danger" })
+    <br />
+
+    <div>
+        @ViewBag.Exception
+    </div>
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
+
+
+

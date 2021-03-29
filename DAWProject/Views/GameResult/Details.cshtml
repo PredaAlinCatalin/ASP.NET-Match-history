@@ -1,0 +1,114 @@
+﻿@model DAWProject.Models.GameResult
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@Html.Label("UserName", "UserName:")
+<br />
+<p>@Model.User.UserName</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4><b><u>Game Info</u></b></h4>
+
+
+        @Html.Label("GameId", "GameId:")
+        <br />
+        <p>@Model.GameId</p>
+
+        @Html.Label("Duration", "Duration:")
+        <br />
+        <p>@Model.Game.Duration</p>
+
+        @Html.Label("Day", "Day:")
+        <br />
+        <p>@Model.Game.Day</p>
+
+        @Html.Label("Month", "Month:")
+        <br />
+        <p>@Model.Game.Month</p>
+
+        @Html.Label("Year", "Year:")
+        <br />
+        <p>@Model.Game.Year</p>
+
+        @if (Model.Game.Attributes.Count > 0)
+        {
+            @Html.Label("Attributes", "Attributes:")
+            <br />
+            <ul>
+                @foreach (var attribute in Model.Game.Attributes)
+                {
+                    <li>@attribute.Name</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4><b><u>Player Info</u></b></h4>
+
+        @Html.Label("PlayerName", "PlayerName:")
+        <br />
+        <p>@Model.Player.Name</p>
+
+        @Html.Label("NrWins", "NrWins:")
+        <br />
+        <p>@Model.Player.PlayerStat.NrWins</p>
+
+        @Html.Label("NrLosses", "NrLosses:")
+        <br />
+        <p>@Model.Player.PlayerStat.NrLosses</p>
+
+        @Html.Label("Division", "Division:")
+        <br />
+        <p>@Model.Player.Division.Name</p>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4><b><u>Game Result Info</u></b></h4>
+
+        @Html.Label("NrKills", "NrKills:")
+        <br />
+        <p>@Model.NrKills</p>
+
+        @Html.Label("NrDeaths", "NrDeaths:")
+        <br />
+        <p>@Model.NrDeaths</p>
+
+        @Html.Label("NrAssists", "NrAssists:")
+        <br />
+        <p>@Model.NrAssists</p>
+
+        @Html.Label("DamageDealt", "DamageDealt:")
+        <br />
+        <p>@Model.DamageDealt</p>
+
+        @Html.Label("CreepScore", "CreepScore:")
+        <br />
+        <p>@Model.CreepScore</p>
+
+    </div>
+</div>
+<br />
+@using (Html.BeginForm(actionName: "Edit", controllerName: "GameResult", method: FormMethod.Get, routeValues: new { gameId = Model.GameId, playerId = Model.PlayerId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "GameResult", method: FormMethod.Post, routeValues: new { gameId = Model.GameId, playerId = Model.PlayerId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+

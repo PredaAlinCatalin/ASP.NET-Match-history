@@ -1,0 +1,30 @@
+﻿
+@{ ViewBag.Title = "GamesResults"; }
+
+<h2>@ViewBag.Title</h2>
+
+@if (ViewBag.GamesResults != null)
+{
+    foreach (var gameResult in ViewBag.GamesResults)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+            @Html.Label("GameId", "GameId:")
+            <br />
+            <p>@gameResult.GameId</p>
+
+            @Html.Label("PlayerName", "PlayerName:")
+            <br />
+            <p>@gameResult.Player.Name</p>
+
+            @using (Html.BeginForm(actionName: "Details", controllerName: "GameResult", method: FormMethod.Get,
+            routeValues: new { gameId = gameResult.GameId, playerId = gameResult.PlayerId }))
+            {
+                <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Summary</button>}
+            </div>
+    </div>
+    }
+ }
+
+<br />
+@Html.ActionLink("Add gameResult", "New")

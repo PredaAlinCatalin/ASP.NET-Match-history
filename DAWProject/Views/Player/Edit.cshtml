@@ -1,0 +1,38 @@
+﻿@model DAWProject.Models.PlayerStatPlayerViewModel
+@{
+    ViewBag.Name = "Update";
+}
+
+<h2>@ViewBag.Name</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Player"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.Label("Name", "Name:")
+    <br />
+    @Html.EditorFor(b => b.Name, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Name, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrWins", "NrWins:")
+    <br />
+    @Html.EditorFor(b => b.NrWins, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.NrWins, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrLosses", "NrLosses:")
+    <br />
+    @Html.EditorFor(b => b.NrLosses, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.NrLosses, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Divisions", "Division:")
+    <br />
+    @Html.DropDownListFor(p => p.DivisionId, new SelectList(ViewBag.DivisionList, "Value", "Text"), "Choose a division", new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.DivisionId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Update</button>
+}

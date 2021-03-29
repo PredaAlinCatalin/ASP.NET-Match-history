@@ -1,0 +1,28 @@
+﻿
+@{ ViewBag.Title = "Divisions"; }
+
+<h2>@ViewBag.Title</h2>
+
+@if (ViewBag.Divisions != null)
+{
+    foreach (var division in ViewBag.Divisions)
+    {
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @Html.Label("Name", "Name:")
+        <br />
+        <p>@division.Name</p>
+
+
+        @using (Html.BeginForm(actionName: "Details", controllerName: "Division", method: FormMethod.Get,
+        routeValues: new { id = division.DivisionId }))
+        {
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Summary</button>}
+    </div>
+</div>}
+}
+
+
+<br />
+@Html.ActionLink("Add division", "New")

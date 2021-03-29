@@ -1,0 +1,31 @@
+﻿@model DAWProject.Models.Division
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@Html.Label("UserName", "UserName:")
+<br />
+<p>@Model.User.UserName</p>
+
+@Html.Label("Name", "Name:")
+<br />
+<p>@Model.Name</p>
+
+
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Division", method: FormMethod.Get, routeValues: new { id = Model.DivisionId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Division", method: FormMethod.Post, routeValues: new { id = Model.DivisionId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+

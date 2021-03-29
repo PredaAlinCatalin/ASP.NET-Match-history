@@ -1,0 +1,27 @@
+﻿@model DAWProject.Models.PlayerStat
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "PlayerStat", method: FormMethod.Post))
+{
+    @Html.Label("NrWins", "NrWins:")
+    <br />
+    @Html.TextBoxFor(b => b.NrWins, null, new { placeholder = "Type in the player's nrWins", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrWins, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrLosses", "NrLosses:")
+    <br />
+    @Html.TextBoxFor(b => b.NrLosses, null, new { placeholder = "Type in the player's nrLosses", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrLosses, "", new { @class = "text-danger" })
+    <br />
+
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
+
+
+

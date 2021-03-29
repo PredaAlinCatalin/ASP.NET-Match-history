@@ -1,0 +1,52 @@
+﻿@model DAWProject.Models.Game
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Game", method: FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.UserId)
+
+    @Html.Label("Duration", "Duration:")
+    <br />
+    @Html.TextBoxFor(b => b.Duration, null, new { placeholder = "Type in the game's duration", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Duration, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Day", "Day:")
+    <br />
+    @Html.TextBoxFor(b => b.Day, null, new { placeholder = "Type in the game's day", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Day, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Month", "Month:")
+    <br />
+    @Html.TextBoxFor(b => b.Month, null, new { placeholder = "Type in the game's month", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Month, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Year", "Year:")
+    <br />
+    @Html.TextBoxFor(b => b.Year, null, new { placeholder = "Type in the game's year", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Year, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(b => b.AttributesList, "Choose attributes:")
+    <br />
+    for (int i = 0; i < Model.AttributesList.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.AttributesList[i].Id)
+        @Html.HiddenFor(b => b.AttributesList[i].Name)
+        @Html.CheckBoxFor(b => b.AttributesList[i].Checked)
+        @Html.DisplayFor(b => b.AttributesList[i].Name)
+        <br />
+    }
+
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
+
+
+

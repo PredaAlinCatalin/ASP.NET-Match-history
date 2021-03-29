@@ -1,0 +1,34 @@
+﻿@model DAWProject.Models.PlayerStat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@Html.Label("Player Id", "Player Id")
+<br />
+<p>@Model.Player.PlayerId</p>
+
+@Html.Label("NrWins", "NrWins:")
+<br />
+<p>@Model.NrWins</p>
+
+@Html.Label("NrLosses", "NrLosses:")
+<br />
+<p>@Model.NrLosses</p>
+
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "PlayerStat", method: FormMethod.Get, routeValues: new { id = Model.PlayerStatId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "PlayerStat", method: FormMethod.Post, routeValues: new { id = Model.PlayerStatId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+

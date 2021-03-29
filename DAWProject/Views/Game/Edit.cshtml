@@ -1,0 +1,49 @@
+﻿@model DAWProject.Models.Game
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Game"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+
+    @Html.Label("Duration", "Duration:")
+    <br />
+    @Html.EditorFor(b => b.Duration, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Duration, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Day", "Day:")
+    <br />
+    @Html.EditorFor(b => b.Day, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Day, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Month", "Month:")
+    <br />
+    @Html.EditorFor(b => b.Month, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Month, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Year", "Year:")
+    <br />
+    @Html.EditorFor(b => b.Year, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Year, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(b => b.AttributesList, "Choose attributes:")
+    <br />
+    for (int i = 0; i < Model.AttributesList.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.AttributesList[i].Id)
+        @Html.HiddenFor(b => b.AttributesList[i].Name)
+        @Html.CheckBoxFor(b => b.AttributesList[i].Checked)
+        @Html.DisplayFor(b => b.AttributesList[i].Name)
+        <br />
+    }
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}

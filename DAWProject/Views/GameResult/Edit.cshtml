@@ -1,0 +1,58 @@
+﻿@model DAWProject.Models.GameResult
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Label("GameId", "GameId:")
+<br />
+<p>@Model.GameId</p>
+
+@Html.Label("PlayerName", "PlayerName:")
+<br />
+<p>@Model.Player.Name</p>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "GameResult", method: FormMethod.Post))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.Label("NrKills", "NrKills:")
+    <br />
+    @Html.TextBoxFor(b => b.NrKills, new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrKills, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrDeaths", "NrDeaths:")
+    <br />
+    @Html.TextBoxFor(b => b.NrDeaths, new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrDeaths, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrAssists", "NrAssists:")
+    <br />
+    @Html.TextBoxFor(b => b.NrAssists, new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.NrAssists, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("DamageDealt", "DamageDealt:")
+    <br />
+    @Html.TextBoxFor(b => b.DamageDealt, new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.DamageDealt, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("CreepScore", "CreepScore:")
+    <br />
+    @Html.TextBoxFor(b => b.CreepScore, new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.CreepScore, "", new { @class = "text-danger" })
+    <br />
+
+    <div class="text-danger">
+        @ViewBag.Exception
+    </div>
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}
+
+
+
